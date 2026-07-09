@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Invite code growth flywheel</title>
+  <desc id="desc">A monochrome flywheel of scarcity, social currency, referral reach, and product feedback.</desc>
+  <rect width="640" height="480" fill="#fff"/>
+  <rect x="34" y="34" width="572" height="412" fill="#f7f7f7" stroke="#111" stroke-width="3"/>
+  <circle cx="320" cy="240" r="90" fill="#fff" stroke="#111" stroke-width="4"/>
+  <text x="274" y="232" fill="#111" font-family="Arial, sans-serif" font-size="22" font-weight="700">INVITE</text>
+  <text x="281" y="260" fill="#111" font-family="Arial, sans-serif" font-size="22" font-weight="700">CODE</text>
+  <g fill="none" stroke="#111" stroke-width="5">
+    <path d="M320 78c68 0 128 42 152 102"/>
+    <path d="M500 240c0 68-42 128-102 152"/>
+    <path d="M320 402c-68 0-128-42-152-102"/>
+    <path d="M140 240c0-68 42-128 102-152"/>
+  </g>
+  <g fill="#111">
+    <path d="M468 171l24 22 6-32z"/>
+    <path d="M407 389l-32 6 22 24z"/>
+    <path d="M172 309l-24-22-6 32z"/>
+    <path d="M233 91l32-6-22-24z"/>
+  </g>
+  <g font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#111">
+    <text x="273" y="68">Scarcity</text>
+    <text x="468" y="246">Reach</text>
+    <text x="238" y="430">Feedback</text>
+    <text x="70" y="246">Status</text>
+  </g>
+</svg>
