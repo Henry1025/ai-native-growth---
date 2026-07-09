@@ -34,6 +34,7 @@ jobs:
           cp index.html styles.css dist/
           cp -R assets dist/
           if [ -d issues ]; then cp -R issues dist/; fi
+          if [ -d blog ]; then cp -R blog dist/; fi
           touch dist/.nojekyll
 
       - name: Publish to gh-pages branch

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-labelledby="title desc">
+  <title id="title">Agent workspace editorial illustration</title>
+  <desc id="desc">A black and white editorial diagram of humans and AI agents working in shared channels.</desc>
+  <rect width="960" height="600" fill="#f7f7f7"/>
+  <rect x="34" y="34" width="892" height="532" fill="#fff" stroke="#151515" stroke-width="3"/>
+  <line x1="34" y1="110" x2="926" y2="110" stroke="#151515" stroke-width="3"/>
+  <text x="60" y="82" fill="#151515" font-family="Georgia, serif" font-size="38" font-weight="700">Agent Workspace</text>
+  <g fill="none" stroke="#151515" stroke-width="2">
+    <rect x="62" y="148" width="210" height="346"/>
+    <rect x="310" y="148" width="588" height="346"/>
+    <line x1="310" y1="220" x2="898" y2="220"/>
+    <line x1="310" y1="306" x2="898" y2="306"/>
+    <line x1="310" y1="392" x2="898" y2="392"/>
+  </g>
+  <g fill="#151515" font-family="Arial, sans-serif" font-weight="700">
+    <text x="84" y="182" font-size="18">CHANNELS</text>
+    <text x="338" y="184" font-size="18">THREAD</text>
+  </g>
+  <g stroke="#151515" stroke-width="2">
+    <line x1="92" y1="224" x2="232" y2="224"/>
+    <line x1="92" y1="272" x2="232" y2="272"/>
+    <line x1="92" y1="320" x2="232" y2="320"/>
+    <line x1="92" y1="368" x2="232" y2="368"/>
+    <line x1="92" y1="416" x2="232" y2="416"/>
+  </g>
+  <circle cx="370" cy="263" r="28" fill="#151515"/>
+  <circle cx="370" cy="349" r="28" fill="#fff" stroke="#151515" stroke-width="3"/>
+  <circle cx="370" cy="435" r="28" fill="#151515"/>
+  <g stroke="#151515" stroke-width="3">
+    <line x1="428" y1="250" x2="828" y2="250"/>
+    <line x1="428" y1="276" x2="694" y2="276"/>
+    <line x1="428" y1="336" x2="820" y2="336"/>
+    <line x1="428" y1="362" x2="730" y2="362"/>
+    <line x1="428" y1="422" x2="804" y2="422"/>
+    <line x1="428" y1="448" x2="650" y2="448"/>
+  </g>
+  <g fill="#fff" stroke="#151515" stroke-width="3">
+    <rect x="642" y="145" width="84" height="48"/>
+    <rect x="750" y="145" width="84" height="48"/>
+  </g>
+  <text x="660" y="176" fill="#151515" font-family="Arial, sans-serif" font-size="18" font-weight="700">QA</text>
+  <text x="768" y="176" fill="#151515" font-family="Arial, sans-serif" font-size="18" font-weight="700">DEV</text>
+</svg>

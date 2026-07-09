@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>党浩晨的 Blog - AI Native Growth Notes</title>
+    <meta
+      name="description"
+      content="党浩晨关于 AI native growth、agent workspace、增长策略与 AI 工程方法论的项目和文章索引。"
+    />
+    <style>
+      :root {
+        --page: #fff;
+        --ink: #121212;
+        --muted: #5f5f5f;
+        --soft: #f7f7f7;
+        --rule: #d8d8d8;
+        --heavy: #111;
+        --link: #326891;
+        --serif: Georgia, "Times New Roman", "Noto Serif SC", "Songti SC", SimSun, serif;
+        --sans: Arial, Helvetica, "Noto Sans SC", "Microsoft YaHei", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--page);
+        color: var(--ink);
+        font-family: var(--serif);
+      }
+
+      a {
+        color: inherit;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      .masthead,
+      main,
+      .footer {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .utility {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        min-height: 36px;
+        align-items: center;
+        border-bottom: 1px solid #ececec;
+        color: var(--muted);
+        font-family: var(--sans);
+        font-size: 0.76rem;
+        font-weight: 700;
+      }
+
+      .nameplate {
+        display: block;
+        padding: 18px 0 16px;
+        border-bottom: 1px solid var(--heavy);
+        color: var(--ink);
+        font-size: clamp(2.25rem, 6vw, 4.85rem);
+        font-weight: 700;
+        line-height: 0.94;
+        letter-spacing: 0;
+        text-align: center;
+        text-decoration: none;
+      }
+
+      .briefing {
+        display: grid;
+        grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+        gap: 28px;
+        padding: 26px 0 24px;
+        border-bottom: 1px solid var(--heavy);
+      }
+
+      .lead {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(300px, 0.85fr);
+        gap: 24px;
+        align-items: start;
+      }
+
+      .lead > div {
+        min-width: 0;
+      }
+
+      .kicker,
+      .source,
+      .read-time,
+      .section-title,
+      .tag,
+      .modal-meta,
+      .project-label {
+        font-family: var(--sans);
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+
+      .kicker {
+        margin: 0 0 8px;
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      .lead h1 {
+        margin-bottom: 12px;
+        font-size: clamp(2.1rem, 4vw, 3.35rem);
+        line-height: 1.02;
+        letter-spacing: 0;
+        overflow-wrap: break-word;
+      }
+
+      .dek {
+        margin-bottom: 18px;
+        color: #333;
+        font-size: 1.08rem;
+        line-height: 1.5;
+      }
+
+      .byline {
+        color: var(--muted);
+        font-family: var(--sans);
+        font-size: 0.82rem;
+        line-height: 1.45;
+      }
+
+      .hero-img,
+      .story-thumb,
+      .project-thumb {
+        display: block;
+        width: 100%;
+        border: 1px solid var(--rule);
+        background: #f4f4f4;
+        object-fit: cover;
+      }
+
+      .hero-img {
+        aspect-ratio: 16 / 10;
+      }
+
+      .side-rail {
+        border-left: 1px solid var(--rule);
+        padding-left: 22px;
+      }
+
+      .section-title {
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--rule);
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+
+      .project {
+        display: grid;
+        grid-template-columns: 96px minmax(0, 1fr);
+        gap: 14px;
+        padding: 14px 0;
+        border: 0;
+        border-bottom: 1px solid var(--rule);
+        background: #fff;
+        cursor: pointer;
+        text-align: left;
+        text-decoration: none;
+        width: 100%;
+      }
+
+      .project:hover h3 {
+        color: var(--link);
+      }
+
+      .project-thumb {
+        aspect-ratio: 1 / 1;
+      }
+
+      .project-label,
+      .source {
+        display: block;
+        margin-bottom: 5px;
+        color: var(--muted);
+        font-size: 0.67rem;
+        font-weight: 800;
+      }
+
+      .project h3 {
+        margin-bottom: 6px;
+        font-size: 1.02rem;
+        line-height: 1.16;
+      }
+
+      .project p {
+        margin-bottom: 0;
+        color: #4d4d4d;
+        font-size: 0.88rem;
+        line-height: 1.42;
+      }
+
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 18px 0 0;
+      }
+
+      .tab {
+        border: 1px solid var(--heavy);
+        background: #fff;
+        color: var(--ink);
+        cursor: pointer;
+        font-family: var(--sans);
+        font-size: 0.76rem;
+        font-weight: 800;
+        padding: 7px 10px;
+      }
+
+      .tab[aria-pressed="true"] {
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .stories {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0;
+        border-bottom: 1px solid var(--heavy);
+      }
+
+      .story-card {
+        display: grid;
+        grid-template-rows: auto 1fr;
+        gap: 12px;
+        min-height: 100%;
+        padding: 18px 18px 18px 0;
+        border: 0;
+        border-right: 1px solid var(--rule);
+        background: #fff;
+        color: var(--ink);
+        cursor: pointer;
+        text-align: left;
+      }
+
+      .story-card:nth-child(3n) {
+        border-right: 0;
+        padding-right: 0;
+        padding-left: 18px;
+      }
+
+      .story-card:nth-child(3n + 2) {
+        padding-left: 18px;
+      }
+
+      .story-card.is-hidden {
+        display: none;
+      }
+
+      .story-card:hover h2 {
+        color: var(--link);
+      }
+
+      .story-thumb {
+        aspect-ratio: 4 / 3;
+      }
+
+      .story-card h2 {
+        margin-bottom: 8px;
+        font-size: 1.35rem;
+        line-height: 1.13;
+        letter-spacing: 0;
+      }
+
+      .story-card p {
+        margin-bottom: 10px;
+        color: #444;
+        font-size: 0.95rem;
+        line-height: 1.42;
+      }
+
+      .read-time {
+        color: var(--muted);
+        font-size: 0.72rem;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 11px;
+      }
+
+      .tag {
+        border: 1px solid var(--rule);
+        color: #4a4a4a;
+        font-size: 0.62rem;
+        font-weight: 800;
+        padding: 4px 6px;
+      }
+
+      .newsletter-strip {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 18px;
+        align-items: center;
+        padding: 18px 0;
+        border-bottom: 1px solid var(--heavy);
+      }
+
+      .newsletter-strip p {
+        margin: 0;
+        color: #333;
+        font-size: 1.02rem;
+        line-height: 1.5;
+      }
+
+      .repo-link {
+        border: 1px solid var(--heavy);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 0.78rem;
+        font-weight: 800;
+        padding: 9px 12px;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+
+      .repo-link:hover {
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .footer {
+        padding: 24px 0 42px;
+        color: var(--muted);
+        font-family: var(--sans);
+        font-size: 0.76rem;
+        line-height: 1.5;
+      }
+
+      dialog {
+        width: min(860px, calc(100% - 28px));
+        max-height: min(88vh, 920px);
+        padding: 0;
+        border: 1px solid var(--heavy);
+        background: #fff;
+        color: var(--ink);
+      }
+
+      dialog::backdrop {
+        background: rgb(255 255 255 / 0.74);
+        backdrop-filter: blur(4px);
+      }
+
+      .modal-shell {
+        padding: 26px clamp(18px, 4vw, 42px) 34px;
+      }
+
+      .modal-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: start;
+        margin-bottom: 18px;
+        border-bottom: 1px solid var(--rule);
+        padding-bottom: 12px;
+      }
+
+      .modal-meta {
+        color: var(--muted);
+        font-size: 0.72rem;
+        font-weight: 800;
+      }
+
+      .close {
+        width: 38px;
+        height: 38px;
+        border: 1px solid var(--heavy);
+        background: #fff;
+        cursor: pointer;
+        font-family: var(--sans);
+        font-weight: 800;
+      }
+
+      .close:hover {
+        background: var(--ink);
+        color: #fff;
+      }
+
+      .modal-title {
+        margin-bottom: 12px;
+        font-size: clamp(2rem, 5vw, 3.65rem);
+        line-height: 1.03;
+        letter-spacing: 0;
+      }
+
+      .article-body {
+        color: #1d1d1d;
+        font-size: 1.05rem;
+        line-height: 1.72;
+      }
+
+      .article-body h3 {
+        margin: 28px 0 8px;
+        font-size: 1.32rem;
+        line-height: 1.18;
+      }
+
+      .article-body p,
+      .article-body ul,
+      .article-body ol {
+        margin-bottom: 16px;
+      }
+
+      .article-body ul,
+      .article-body ol {
+        padding-left: 1.35em;
+      }
+
+      .article-body blockquote {
+        margin: 22px 0;
+        padding: 12px 18px;
+        border-left: 4px solid var(--heavy);
+        background: var(--soft);
+        color: #2d2d2d;
+      }
+
+      .note {
+        border-top: 1px solid var(--rule);
+        margin-top: 20px;
+        padding-top: 14px;
+        color: var(--muted);
+        font-family: var(--sans);
+        font-size: 0.82rem;
+        line-height: 1.5;
+      }
+
+      @media (max-width: 900px) {
+        .briefing,
+        .lead,
+        .newsletter-strip {
+          grid-template-columns: 1fr;
+        }
+
+        .side-rail {
+          border-left: 0;
+          border-top: 1px solid var(--heavy);
+          padding-left: 0;
+          padding-top: 16px;
+        }
+
+        .stories {
+          grid-template-columns: 1fr;
+        }
+
+        .story-card,
+        .story-card:nth-child(3n),
+        .story-card:nth-child(3n + 2) {
+          grid-template-columns: minmax(0, 1fr) minmax(132px, 34%);
+          grid-template-rows: auto;
+          gap: 16px;
+          padding: 16px 0;
+          border-right: 0;
+          border-bottom: 1px solid var(--rule);
+        }
+
+        .story-card .story-thumb {
+          grid-column: 2;
+          grid-row: 1;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .utility {
+          align-items: flex-start;
+          flex-direction: column;
+          justify-content: center;
+          padding: 7px 0;
+        }
+
+        .project {
+          grid-template-columns: 78px minmax(0, 1fr);
+        }
+
+        .story-card,
+        .story-card:nth-child(3n),
+        .story-card:nth-child(3n + 2) {
+          grid-template-columns: 1fr;
+        }
+
+        .story-card .story-thumb {
+          grid-column: 1;
+          grid-row: 1;
+        }
+
+        .article-body {
+          font-size: 1rem;
+          line-height: 1.68;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="masthead" id="top">
+      <div class="utility">
+        <span>Thursday, July 9, 2026</span>
+        <span>TikTok Monetization / AI Native Growth</span>
+      </div>
+      <a class="nameplate" href="#top">党浩晨的 Blog</a>
+    </header>
+
+    <main>
+      <section class="briefing" aria-labelledby="pageTitle">
+        <article class="lead">
+          <div>
+            <p class="kicker">Personal Dispatch</p>
+            <h1 id="pageTitle">AI Native Growth Notes</h1>
+            <p class="dek">
+              这里是 @党浩晨 的 blog。现在在 TikTok Monetization 做策略，持续记录 AI、增长、
+              agent workspace 和一些有趣的项目/产品。
+            </p>
+            <p class="byline">点击下方文章卡片阅读全文；项目卡片会跳转到对应仓库或说明。</p>
+          </div>
+          <img
+            class="hero-img"
+            src="../assets/blog-agent-workspace.svg"
+            alt="一个报纸风格的 agent workspace 示意图"
+          />
+        </article>
+
+        <aside class="side-rail" aria-label="Projects">
+          <h2 class="section-title">Projects</h2>
+          <a class="project" href="https://github.com/Henry1025/ai-native-growth-publisher" rel="noreferrer">
+            <img class="project-thumb" src="../assets/blog-news-publisher.svg" alt="新闻网页发布器示意图" />
+            <span>
+              <span class="project-label">2026.5</span>
+              <h3>News Publisher</h3>
+              <p>一个把 news 一键做成 NYT 风格网页的项目。</p>
+            </span>
+          </a>
+          <button class="project" type="button" data-open="tracking-bot">
+            <img class="project-thumb" src="../assets/blog-tracking-bot.svg" alt="新闻追踪 bot 示意图" />
+            <span>
+              <span class="project-label">2026.4</span>
+              <h3>AI Growth Tracking Bot</h3>
+              <p>微信公众号 RSS + 网页 tracking，用来追踪外部新闻。</p>
+            </span>
+          </button>
+        </aside>
+      </section>
+
+      <section aria-label="Article filters">
+        <div class="tabs">
+          <button class="tab" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="tab" type="button" data-filter="agent" aria-pressed="false">Agent</button>
+          <button class="tab" type="button" data-filter="growth" aria-pressed="false">Growth</button>
+          <button class="tab" type="button" data-filter="engineering" aria-pressed="false">Engineering</button>
+        </div>
+      </section>
+
+      <section class="stories" aria-label="Articles">
+        <button class="story-card" type="button" data-category="growth" data-open="affiliate">
+          <img class="story-thumb" src="../assets/blog-affiliate.svg" alt="affiliate program 专题示意图" />
+          <span>
+            <span class="source">2026.7.5 / Growth</span>
+            <h2>Affiliate program 增长</h2>
+            <p>原始材料中已收录标题，正文尚未展开。</p>
+            <span class="read-time">Brief</span>
+            <span class="tag-row"><span class="tag">Growth</span><span class="tag">Coming Note</span></span>
+          </span>
+        </button>
+
+        <button class="story-card" type="button" data-category="agent" data-open="agent-team">
+          <img class="story-thumb" src="../assets/blog-agent-workspace.svg" alt="agent 团队协作示意图" />
+          <span>
+            <span class="source">2026.5.5 / AI Product</span>
+            <h2>搭建 AI agent 团队是否有必要？</h2>
+            <p>slock.ai 引出的一个问题：复杂任务到底该押注超级个体 agent，还是 agent team？</p>
+            <span class="read-time">8 MIN READ</span>
+            <span class="tag-row"><span class="tag">Agent Workspace</span><span class="tag">Slock.ai</span></span>
+          </span>
+        </button>
+
+        <button class="story-card" type="button" data-category="growth" data-open="invite-code">
+          <img class="story-thumb" src="../assets/blog-invite-flywheel.svg" alt="邀请码增长飞轮示意图" />
+          <span>
+            <span class="source">2026.4.6 / AI Growth</span>
+            <h2>为什么 Manus、Elys、OiiOii 们都爱用邀请码？</h2>
+            <p>从 Gmail 到 Clubhouse，看邀请码如何制造稀缺、社交货币和冷启动飞轮。</p>
+            <span class="read-time">5 MIN READ</span>
+            <span class="tag-row"><span class="tag">Cold Start</span><span class="tag">Invite Code</span></span>
+          </span>
+        </button>
+
+        <button class="story-card" type="button" data-category="engineering" data-open="harness">
+          <img class="story-thumb" src="../assets/blog-harness-system.svg" alt="Harness Engineering 系统示意图" />
+          <span>
+            <span class="source">2026.4.5 / AI Engineering</span>
+            <h2>Harness Engineering：造新词还是真机会？</h2>
+            <p>OpenAI 的实践把问题从“写代码”推向“设计环境、反馈回路和控制系统”。</p>
+            <span class="read-time">5 MIN READ</span>
+            <span class="tag-row"><span class="tag">Codex</span><span class="tag">Harness</span></span>
+          </span>
+        </button>
+      </section>
+
+      <section class="newsletter-strip" aria-label="Repository">
+        <p>这个页面被发布为一个静态 GitHub Pages 站点，保留原始内容脉络，并用报纸式信息层级组织阅读。</p>
+        <a class="repo-link" href="https://github.com/Henry1025/ai-native-growth-publisher" rel="noreferrer">
+          View Repository
+        </a>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>Built as an interactive editorial index. Visual style references classic newspaper web layouts without using New York Times proprietary assets.</p>
+    </footer>
+
+    <dialog id="reader">
+      <article class="modal-shell">
+        <div class="modal-top">
+          <span class="modal-meta" id="modalMeta"></span>
+          <button class="close" type="button" aria-label="Close article">X</button>
+        </div>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="article-body" id="modalBody"></div>
+      </article>
+    </dialog>
+
+    <template id="tracking-bot">
+      <p>
+        一个追踪外部新闻的 bot，覆盖微信公众号 RSS 与网页 tracking，用来服务 AI native growth 新闻追踪。
+      </p>
+      <p class="note">原始材料中包含项目名称和用途，未附更多正文。</p>
+    </template>
+
+    <template id="affiliate">
+      <p>原始材料中已收录标题：<strong>2026.7.5 affiliate program 增长</strong>。</p>
+      <p class="note">这条内容目前只有标题，正文尚未在附件中展开。</p>
+    </template>
+
+    <template id="agent-team">
+      <p>
+        最近一个月，slock.ai 是我用得最频繁的一个产品。这个产品最早是蓝驰的一位投资人朋友提到的。
+        试用几天以后，很快进入了一个状态：每天都会深度用一个多小时，而且不是那种刷一刷，而是真的在用它推进项目。
+      </p>
+      <p>
+        后来知道这是一个人公司做出来的，更加觉得这个产品确实很 AI native。因为它不是在原有 SaaS 上硬加一个 AI 功能，
+        而是从第一天开始，就把“人和 agent 一起工作”当成默认前提在设计。
+      </p>
+      <h3>过去用 Claude Code 和 Codex 的三个问题</h3>
+      <ul>
+        <li>不同 CLI coding agent 之间的 context 很难自然共享。</li>
+        <li>跨端、跨设备时，agent 的记忆不共享。</li>
+        <li>多个 coding agent 很难方便地协作，很多时候人仍然在中间做人肉传话筒。</li>
+      </ul>
+      <p>
+        slock.ai 让我第一次觉得，这三件事被放进了同一个解法里。在 slock 上部署自己的 agent 大概需要两个动作：
+        先连接电脑设备，再把已经安装的各种 CLI agent 接入 slock，选择设备、CLI agent 和具体 model。
+      </p>
+      <h3>Agent 团队 vs 超级个体 agent</h3>
+      <p>
+        slock.ai 本质上是一个让人和 AI agent 在同一个工作空间里协作的平台。它最有意思的点不是又多了一个 agent，
+        而是它把 agent 从“一个单独的工具”变成了“一个可以持续协作的成员”。
+      </p>
+      <p>
+        超级 agent 当然会存在，而且会越来越强。但在真实工作里，问题并不是“有没有一个 agent 足够聪明”，而是
+        “一个复杂任务能不能被稳定推进到完成”。
+      </p>
+      <p>
+        一个单体 agent 最大的问题，是它天然会把所有事情揉进同一个上下文里。需求理解、方案选择、代码实现、debug、
+        review、写文档、解释结果，全在一个 conversation 里完成。刚开始很顺，越往后越容易出问题。
+      </p>
+      <p>
+        多 agent 团队的一个重要价值，就是能够让我们在流程里引入一个很朴素的工程思想：V-model。
+        它的核心是不能等系统全部做完以后，才开始问它是不是对的。每一层设计，都应该对应一层验证。
+      </p>
+      <p>
+        一个极强的 CLI agent 可以自我纠错，但这有点像让同一个人写完方案以后，自己给自己做独立审计。
+        如果一开始理解错了，后面的实现和 review 都会沿着这个错误继续往下走。
+      </p>
+      <blockquote>
+        问题不是“agent team 会不会取代超级 agent”，而是：在同样的预算、同样的 token、同样的时间里，
+        到底应该把资源押在一个超级 agent 上，还是押在一个 agent team 上？
+      </blockquote>
+      <p>
+        我的判断是，超级 agent 追求的是单点智能最大化；agent team 追求的是系统可靠性最大化。
+        边界清楚、反馈很快、验证简单的任务，用超级 agent；跨文件、跨工具、跨设备、跨上下文、需要 review 和持续迭代的任务，
+        用 agent team。
+      </p>
+      <h3>Agent 团队何时很低效？</h3>
+      <p>
+        《Rethinking the Value of Multi-Agent Workflow: A Strong Single Agent Baseline》对 Multi-Agent 的价值提出了一个重要校准：
+        并不是 Agent 数量越多，系统能力就越强。
+      </p>
+      <p>
+        无效的 Multi-Agent Team，通常是“能力同质 + 职责切碎 + 平级协作 + 上下文反复转述”的组合。
+        真正有效的 Multi-Agent 不应该只是“多个同模型 Agent 群聊”，而应该引入 Single Agent 无法自然获得的新能力：
+        异构能力互补、并行搜索、独立上下文隔离、外部专业系统或工具接入，以及被主 Agent 明确调度和收敛的专家 Skill / SubAgent。
+      </p>
+      <p>
+        《Towards a science of scaling agent systems: When and why agent systems work》则认为，Multi-Agent 在可并行任务上可能显著提升表现，
+        但在强顺序依赖任务上会因为沟通成本、上下文碎片化和协调开销导致性能下降。
+      </p>
+      <h3>Recap</h3>
+      <ul>
+        <li>slock.ai 这类产品的核心价值不是“又一个 Agent”，而是 Agent Workspace。</li>
+        <li>Super Agent 和 Agent Team 不是谁取代谁，而是适配不同任务。</li>
+        <li>真正有价值的 Agent Team 来自异构能力、并行探索、上下文隔离、独立 review 和统一 workspace。</li>
+      </ul>
+    </template>
+
+    <template id="invite-code">
+      <h3>Gmail：教科书级的邀请码冷启动</h3>
+      <p>
+        2004 年 4 月 1 日，Google 发布了 Gmail。这个时间点本身就很有意思，愚人节发布，很多人一开始以为是恶作剧。
+        但 Gmail 给出的产品参数完全不像开玩笑。
+      </p>
+      <ul>
+        <li>1GB 邮箱容量。当时 Yahoo Mail 只有几 MB，Gmail 是它的几百倍。</li>
+        <li>对话线程。Gmail 首次把一封邮件及其所有回复聚合成一个对话流。</li>
+        <li>搜索驱动的邮箱。用户不再需要靠复杂文件夹分类，搜关键词就能找到任何邮件。</li>
+      </ul>
+      <p>
+        产品本身是降维打击级别的。而 Gmail 在发布时选择了邀请制：用户只能通过邀请码注册，每人持有的邀请码数量极为有限。
+        结果是，Gmail 邀请码在 eBay 上被炒到了 100 美元以上。
+      </p>
+      <h3>邀请码的冷启动增长飞轮</h3>
+      <p>
+        Gmail 的案例不是偶然。如果拆解邀请码机制背后的增长逻辑，会发现它构成了一个自强化飞轮：
+        稀缺感 → 社交货币 → 裂变触达 → 数据口碑积累 → 产品体验提升 → 更强的稀缺感与飞轮加速。
+      </p>
+      <ol>
+        <li>稀缺感制造身份标签。“我有邀请码”本身变成一种身份信号。</li>
+        <li>身份标签触发传播冲动。拥有邀请码的人会主动展示、分享。</li>
+        <li>裂变触达新用户，且获客成本接近 0。</li>
+        <li>高质量用户积累口碑和数据。</li>
+        <li>产品体验持续改善。</li>
+        <li>稀缺感从“人为制造”变成“真实共识”。</li>
+      </ol>
+      <h3>Bad Case：Clubhouse 的教训</h3>
+      <p>
+        邀请码不是魔法。它适合冷启动，不适合长期依赖。Clubhouse 是最典型的反面教材。
+        2020 年底到 2021 年初，Clubhouse 一码难求，短时间内用户数从 60 万涨到 200 万，估值冲到 10 亿美元。
+      </p>
+      <p>
+        但问题是，Clubhouse 的产品本身没有足够的留存价值来承接这波流量。当稀缺感逐渐消退，
+        用户发现自己没有理由继续打开这个 App。
+      </p>
+      <blockquote>
+        邀请码帮 Clubhouse 飞到了不属于它的高度。但没有产品价值做降落伞，掉下来只是时间问题。
+      </blockquote>
+    </template>
+
+    <template id="harness">
+      <p>
+        最近硅谷最火的一个词，不是 Agent，不是 Vibe Coding，而是一个听起来很朴素的词：Harness Engineering。
+        OpenAI 在今年 2 月公开了一个事实：他们内部有一个产品，超过 100 万行代码，没有一行是人写的。
+      </p>
+      <p>
+        三个工程师，平均每人每天合并 3.5 个 PR，全部由 Codex Agent 完成。工程师的工作不是写代码，
+        而是设计一套让 AI 能够可靠写代码的系统。这套系统，就叫 Harness。
+      </p>
+      <p><a href="https://openai.com/index/harness-engineering/" rel="noreferrer">OpenAI: Harness Engineering</a></p>
+      <h3>Harness 到底是什么？</h3>
+      <p>
+        “Harness”的本义是马具：缰绳、马鞍、嚼子，一整套驾驭一匹强壮但不可预测的马的装备。
+        在 AI 语境下，模型是那匹马，Harness 是那套马具。
+      </p>
+      <p>
+        Harness 不是某个具体产品或框架，而是一种工程方法论：围绕模型构建的一切。OpenAI 自己的总结是：
+        “我们最困难的挑战，已经不再是写代码，而是设计环境、反馈回路和控制系统。”
+      </p>
+      <h3>OpenAI 具体做了什么？</h3>
+      <p>
+        这不是一篇理论文章。OpenAI 用五个月真正建了一个有内部日活用户的产品。以下是他们踩过的坑和总结的实践。
+      </p>
+      <p>
+        上下文管理：给 Agent 一张地图，不是一本百科全书。他们最早犯的错误是写了一个巨大的 AGENTS.md，
+        试图把所有规则都塞进去。失败了，因为上下文是稀缺资源，大文件挤占真正重要的信息；当所有东西都重要时，什么都不重要。
+      </p>
+      <p>
+        解决方案是把 AGENTS.md 缩到约 100 行，只当“目录”用，指向结构化的 docs/ 目录：
+        设计文档、执行计划、产品规格、架构说明、质量评分，这才是唯一真实来源。
+      </p>
+      <p>
+        让应用本身对 Agent 可读：OpenAI 不仅让代码库对 Agent 可读，还让正在运行的应用对 Agent 可读，
+        接入 Chrome DevTools Protocol 让 Agent 截图、拿 DOM 快照、直接验证 UI 行为。
+      </p>
+      <h3>对增长的启发</h3>
+      <p>
+        这是一个技术话题，但方法论层面的启示跨领域。“Agent 失败是系统的 bug”。
+        用 AI 辅助增长时，如果输出质量差，长期应该问：到底缺了什么环境定义？
+      </p>
+      <p>
+        工作正在上移一层抽象。未来增长专家也许类似 harness 系统工程师：排优先级、翻译意图为标准、验证结果。
+      </p>
+    </template>
+
+    <script>
+      const articleMeta = {
+        "tracking-bot": ["2026.4 / Project", "AI Growth Tracking Bot"],
+        affiliate: ["2026.7.5 / Growth", "Affiliate program 增长"],
+        "agent-team": ["2026.5.5 / AI Product", "搭建 AI agent 团队是否有必要？"],
+        "invite-code": ["2026.4.6 / AI Growth", "为什么 Manus、Elys、OiiOii 们都爱用邀请码？"],
+        harness: ["2026.4.5 / AI Engineering", "Harness Engineering：造新词还是真机会？"],
+      };
+
+      const dialog = document.querySelector("#reader");
+      const modalMeta = document.querySelector("#modalMeta");
+      const modalTitle = document.querySelector("#modalTitle");
+      const modalBody = document.querySelector("#modalBody");
+
+      document.querySelectorAll("[data-open]").forEach((button) => {
+        button.addEventListener("click", () => {
+          const id = button.dataset.open;
+          const template = document.getElementById(id);
+          const [meta, title] = articleMeta[id];
+          modalMeta.textContent = meta;
+          modalTitle.textContent = title;
+          modalBody.replaceChildren(template.content.cloneNode(true));
+          dialog.showModal();
+        });
+      });
+
+      document.querySelector(".close").addEventListener("click", () => dialog.close());
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+
+      document.querySelectorAll(".tab").forEach((tab) => {
+        tab.addEventListener("click", () => {
+          const filter = tab.dataset.filter;
+          document.querySelectorAll(".tab").forEach((item) => {
+            item.setAttribute("aria-pressed", String(item === tab));
+          });
+          document.querySelectorAll(".story-card").forEach((card) => {
+            card.classList.toggle("is-hidden", filter !== "all" && card.dataset.category !== filter);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

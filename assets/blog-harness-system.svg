@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480" role="img" aria-labelledby="title desc">
+  <title id="title">Harness engineering system</title>
+  <desc id="desc">A system diagram showing context, tools, logs, and feedback loops around an AI model.</desc>
+  <rect width="640" height="480" fill="#fff"/>
+  <rect x="34" y="34" width="572" height="412" fill="#f7f7f7" stroke="#111" stroke-width="3"/>
+  <rect x="242" y="170" width="156" height="116" fill="#111"/>
+  <text x="278" y="220" fill="#fff" font-family="Arial, sans-serif" font-size="22" font-weight="700">MODEL</text>
+  <text x="269" y="250" fill="#fff" font-family="Arial, sans-serif" font-size="22" font-weight="700">CORE</text>
+  <g fill="#fff" stroke="#111" stroke-width="4">
+    <rect x="70" y="78" width="148" height="76"/>
+    <rect x="422" y="78" width="148" height="76"/>
+    <rect x="70" y="326" width="148" height="76"/>
+    <rect x="422" y="326" width="148" height="76"/>
+  </g>
+  <g fill="#111" font-family="Arial, sans-serif" font-size="18" font-weight="700">
+    <text x="101" y="124">CONTEXT</text>
+    <text x="466" y="124">TOOLS</text>
+    <text x="110" y="372">LOGS</text>
+    <text x="448" y="372">FEEDBACK</text>
+  </g>
+  <g stroke="#111" stroke-width="4" fill="none">
+    <path d="M218 116 C270 116 270 170 270 170"/>
+    <path d="M422 116 C370 116 370 170 370 170"/>
+    <path d="M218 364 C270 364 270 286 270 286"/>
+    <path d="M422 364 C370 364 370 286 370 286"/>
+    <path d="M396 228 C466 228 466 286 432 322"/>
+  </g>
+</svg>
