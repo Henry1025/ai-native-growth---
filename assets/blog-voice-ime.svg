@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">Voice input method</title>
+  <desc id="desc">A monochrome editorial illustration of speech turning into written email.</desc>
+  <rect width="320" height="320" fill="#fff"/>
+  <rect x="34" y="42" width="252" height="214" fill="#f7f7f7" stroke="#111" stroke-width="3"/>
+  <rect x="62" y="78" width="122" height="142" fill="#fff" stroke="#111" stroke-width="3"/>
+  <line x1="82" y1="106" x2="164" y2="106" stroke="#111" stroke-width="6"/>
+  <line x1="82" y1="134" x2="164" y2="134" stroke="#777" stroke-width="4"/>
+  <line x1="82" y1="160" x2="150" y2="160" stroke="#777" stroke-width="4"/>
+  <line x1="82" y1="186" x2="166" y2="186" stroke="#777" stroke-width="4"/>
+  <path d="M226 98c19 0 34 15 34 34v18c0 19-15 34-34 34s-34-15-34-34v-18c0-19 15-34 34-34z" fill="#111"/>
+  <rect x="214" y="66" width="24" height="46" rx="12" fill="#fff" stroke="#111" stroke-width="3"/>
+  <path d="M198 150c0 18 13 34 28 34s28-16 28-34" fill="none" stroke="#111" stroke-width="4"/>
+  <line x1="226" y1="184" x2="226" y2="216" stroke="#111" stroke-width="4"/>
+  <line x1="204" y1="216" x2="248" y2="216" stroke="#111" stroke-width="4"/>
+  <path d="M190 236c-20 8-42 8-62 0" fill="none" stroke="#111" stroke-width="4"/>
+  <text x="78" y="278" fill="#111" font-family="Arial, sans-serif" font-size="22" font-weight="700">VOICE TO MAIL</text>
+</svg>
